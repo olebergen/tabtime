@@ -1,0 +1,15 @@
+{
+  "name": "tabclean",
+  "version": "1.0.0",
+  "main": "background.js",
+  "scripts": {
+    "dev": "web-ext run -f /Applications/Zen.app/Contents/MacOS/zen",
+    "build": "web-ext build --overwrite-dest"
+  },
+  "author": "Ole Bergen",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/chrome": "^0.0.329",
+    "typescript": "^5.8.3"
+  }
+}

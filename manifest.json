@@ -12,5 +12,9 @@
     "gecko": {
       "id": "tabclean@oleb.dev"
     }
+  },
+  "browser_action": {
+    "default_title": "Clean Old Tabs",
+    "default_popup": "popup.html"
   }
 }

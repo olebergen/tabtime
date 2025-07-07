@@ -1,6 +1,6 @@
 function closeOldTabs() {
   const now = Date.now();
-  const cutoff = now - 24 * 60 * 60 * 1000; // 24 hours
+  const cutoff = now - 24 * 60 * 60 * 1000;
 
   chrome.tabs.query({}, (tabs) => {
     for (const tab of tabs) {

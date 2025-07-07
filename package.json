@@ -4,7 +4,7 @@
   "main": "background.js",
   "scripts": {
     "dev": "web-ext run -f /Applications/Zen.app/Contents/MacOS/zen",
-    "build": "web-ext build --overwrite-dest"
+    "build": "web-ext build && sh -c 'mv ./web-ext-artifacts/*.zip ./web-ext-artifacts/tabclean@oleb.dev.xpi'"
   },
   "author": "Ole Bergen",
   "license": "UNLICENSED",

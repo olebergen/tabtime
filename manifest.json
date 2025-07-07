@@ -1,12 +1,13 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Auto Close Inactive Tabs",
   "version": "1.0",
+  "description": "Closes tabs inactive for more than 24 hours.",
   "permissions": ["tabs", "alarms"],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"],
+    "persistent": true
   },
-  "description": "Closes tabs inactive for more than 24 hours.",
   "browser_specific_settings": {
     "gecko": {
       "id": "tabclean@oleb.dev"

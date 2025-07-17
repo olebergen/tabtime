@@ -1,5 +1,12 @@
 const container = document.getElementById('container');
 
+// label is in monospace font, add a non-breaking space for alignment
+const getTimeLabel = (hours) => {
+  if (hours === 0) return '<1';
+  if (hours < 10) return '\u00A0' + hours;
+  return hours.toString();
+};
+
 function updateTabsList() {
   chrome.tabs.query({}, (tabs) => {
     container.innerHTML = '';
@@ -15,8 +22,7 @@ function updateTabsList() {
 
       const tabTimeLabel = document.createElement('div');
       tabTimeLabel.className = 'tab-time';
-      tabTimeLabel.textContent =
-        tabTimeHours === 0 ? '<1' : tabTimeHours < 10 ? ' ' + tabTimeHours : tabTimeHours;
+      tabTimeLabel.textContent = getTimeLabel(tabTimeHours);
       tabListItem.appendChild(tabTimeLabel);
 
       const tabTimeTitle = document.createElement('div');

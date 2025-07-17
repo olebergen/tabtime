@@ -4,12 +4,14 @@
   "main": "background.js",
   "scripts": {
     "dev": "web-ext run -f /Applications/Zen.app/Contents/MacOS/zen",
-    "build": "./build.sh"
+    "build": "scripts/build.sh",
+    "logos": "node scripts/logos.js"
   },
   "author": "Ole Bergen",
   "license": "UNLICENSED",
   "devDependencies": {
     "@types/chrome": "^0.0.329",
+    "sharp": "^0.34.3",
     "typescript": "^5.8.3"
   }
 }

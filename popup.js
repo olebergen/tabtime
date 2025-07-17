@@ -1,44 +1,30 @@
-const cutoff = {
-  12: 12 * 60 * 60 * 1000,
-  6: 6 * 60 * 60 * 1000,
-  1: 60 * 60 * 1000,
-};
-
-function getTabCategory(lastAccessed, now) {
-  if (lastAccessed < now - cutoff[12]) return 'olderThan12';
-  if (lastAccessed < now - cutoff[6]) return 'olderThan6';
-  if (lastAccessed < now - cutoff[1]) return 'olderThan1';
-  return 'lessThan1';
-}
-
-const containers = {
-  olderThan12: document.getElementById('tabs-twelve-hours'),
-  olderThan6: document.getElementById('tabs-six-hours'),
-  olderThan1: document.getElementById('tabs-one-hour'),
-  lessThan1: document.getElementById('tabs-fresh'),
-};
+const container = document.getElementById('container');
 
 function updateTabsList() {
   chrome.tabs.query({}, (tabs) => {
-    for (const container of Object.values(containers)) {
-      container.innerHTML = '';
-    }
+    container.innerHTML = '';
 
     for (const tab of tabs) {
       if (tab.id == null || tab.pinned || !tab.lastAccessed) continue;
 
-      const tabElement = document.createElement('div');
+      const tabListItem = document.createElement('li');
+      tabListItem.className = 'tab';
 
-      const now = Date.now();
+      const tabTime = Date.now() - tab.lastAccessed;
+      const tabTimeHours = Math.floor(tabTime / 1000 / 60 / 60);
 
-      tabElement.className = 'tab';
-      tabElement.textContent = tab.title || tab.url;
+      const tabTimeLabel = document.createElement('div');
+      tabTimeLabel.className = 'tab-time';
+      tabTimeLabel.textContent = tabTimeHours > 0 ? `${tabTimeHours}h` : '<1h';
+      tabListItem.appendChild(tabTimeLabel);
 
-      const category = getTabCategory(tab.lastAccessed, now);
+      const tabTimeTitle = document.createElement('div');
+      tabTimeTitle.textContent = tab.title || tab.url;
+      tabListItem.appendChild(tabTimeTitle);
 
-      containers[category].appendChild(tabElement);
+      container.appendChild(tabListItem);
 
-      tabElement.addEventListener('click', () => {
+      tabListItem.addEventListener('click', () => {
         chrome.tabs.remove(tab.id);
       });
     }

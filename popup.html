@@ -1,75 +1,42 @@
 <!doctype html>
 <html>
   <head>
-    <title>Tab Cleaner</title>
+    <title>Tab Time</title>
     <style>
       body {
         font-family: sans-serif;
-        padding: 10px;
+        padding: 12px;
         background-color: rgba(30, 30, 30, 0.85);
         min-width: 300px;
       }
-      .bordered-container {
-        position: relative;
-        border: 2px solid #888;
-        border-radius: 12px;
-        padding: 1rem;
-        background-color: rgba(30, 30, 30, 0.85);
-        color: #f0f0f0;
-      }
-      .bordered-container:not(:last-child) {
-        margin-bottom: 1.5rem;
-      }
-      .label {
-        position: absolute;
-        top: -0.5rem;
-        left: 1rem;
-        background-color: rgba(30, 30, 30, 0.85); /* same as container background */
-        padding: 0.2rem 0.5rem;
-        font-size: 0.85rem;
-        border-radius: 4px;
-        white-space: nowrap;
-      }
-      .tabs-container {
+      #container {
+        list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: column;
         gap: 8px;
       }
       .tab {
-        color: white;
+        color: #fff;
         padding: 8px;
         border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        position: relative;
       }
       .tab:hover {
         background-color: rgba(255, 255, 255, 0.1);
         cursor: pointer;
       }
-      .hidden {
-        display: none;
+      .tab-time {
+        color: #aaa;
       }
     </style>
   </head>
   <body>
-    <div class="bordered-container">
-      <span class="label">12</span>
-      <div id="tabs-twelve-hours" class="tabs-container"></div>
-    </div>
-
-    <div class="bordered-container">
-      <span class="label">6</span>
-      <div id="tabs-six-hours" class="tabs-container"></div>
-    </div>
-
-    <div class="bordered-container">
-      <span class="label">1</span>
-      <div id="tabs-one-hour" class="tabs-container"></div>
-    </div>
-
-    <div class="bordered-container">
-      <span class="label">&lt;1</span>
-      <div id="tabs-fresh" class="tabs-container"></div>
-    </div>
-
+    <ul id="container"></ul>
     <script src="popup.js"></script>
   </body>
 </html>

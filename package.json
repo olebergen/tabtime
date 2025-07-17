@@ -1,5 +1,5 @@
 {
-  "name": "tabclean",
+  "name": "tabtime",
   "version": "1.0.0",
   "main": "background.js",
   "scripts": {

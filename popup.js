@@ -15,7 +15,8 @@ function updateTabsList() {
 
       const tabTimeLabel = document.createElement('div');
       tabTimeLabel.className = 'tab-time';
-      tabTimeLabel.textContent = tabTimeHours > 0 ? `${tabTimeHours}h` : '<1h';
+      tabTimeLabel.textContent =
+        tabTimeHours === 0 ? '<1' : tabTimeHours < 10 ? ' ' + tabTimeHours : tabTimeHours;
       tabListItem.appendChild(tabTimeLabel);
 
       const tabTimeTitle = document.createElement('div');

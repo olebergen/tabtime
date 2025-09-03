@@ -1,19 +1,18 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Tab Time",
   "version": "1.0",
   "description": "Closes tabs inactive for more than 24 hours.",
   "permissions": ["tabs", "alarms"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+    "service_worker": "background.js"
   },
   "browser_specific_settings": {
     "gecko": {
       "id": "tabtime@oleb.dev"
     }
   },
-  "browser_action": {
+  "action": {
     "default_title": "Tab Time",
     "default_popup": "popup.html",
     "default_icon": {
@@ -23,3 +22,4 @@
     }
   }
 }
+
